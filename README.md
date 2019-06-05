@@ -1,1 +1,3 @@
 # JavaScript-kingdom
+
+Playing, learning and beyond...
