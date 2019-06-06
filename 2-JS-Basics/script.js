@@ -1,4 +1,4 @@
-var firstName = "Mario";
+/*var firstName = "Mario";
 console.log(firstName);
 
 var lastName = "Krajacic";
@@ -19,6 +19,7 @@ console.log(job);
  * Multiline comments
  * ********************/
 
+/*
 console.log(firstName + " " + age);
 
 var job, isMarried;
@@ -39,3 +40,36 @@ alert(
 
 var lastName = prompt('What is his last name?');
 console.log(firstName + ' ' + lastName)
+*/
+
+/*
+// Chalenge 1
+var marioMass = prompt('What is Mario mass'); 
+var marioHeight = prompt('What is Mario height'); 
+var marijaMass = prompt('What is Marija mass'); 
+var marijaHeight = prompt('What is Marija height');
+var bmiMario, bmiMarija;
+bmiMario = marioMass / (marioHeight * marioHeight);
+bmiMarija = marijaMass / (marijaHeight * marijaHeight);
+alert('Is Mario\'s BMI higher? ' + (bmiMario > bmiMarija))
+*/
+
+/*****************
+ * If / else
+ */
+
+var firstName = 'Ivan';
+var civilStatus = 'single';
+
+if (civilStatus === 'married') {
+  console.log(firstName + ' is married');
+} else {
+  console.log(firstName + ' is single');
+}
+
+var isMarried = true;
+if (isMarried) {
+  console.log(firstName + ' is married');
+} else {
+  console.log(firstName + ' is single');
+}
