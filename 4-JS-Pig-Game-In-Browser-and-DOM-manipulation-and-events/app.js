@@ -12,4 +12,17 @@ GAME RULES:
 var scores, roundScore, activePlayer, dice;
 scores = [0, 0];
 roundScore = 0;
-activePlayer = 0;
+activePlayer = 1;
+
+dice = Math.floor(Math.random() * 6) + 1;
+
+// Setter - set values of  text or element in html
+document.querySelector('#current-' + activePlayer).textContent = dice;
+//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'
+
+// Getter - Gets value from html
+var x = document.querySelector('#score-0').textContent;
+console.log(x);
+
+// CSS manipulation - hideing dice
+document.querySelector('.dice').style.display = 'none';
