@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, diceResultBefore;
 
 init();
 // Setter - set values of  text or element in html
@@ -25,6 +25,15 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
     // 1. Random number
     dice = Math.floor(Math.random() * 6) + 1;
+
+    // Updating rules of game, if player gets two sixes in a row score resets
+    if ((diceResultBefore === 6) & (dice === 6)) {
+      scores[activePlayer] = 0;
+      document.querySelector('#score-' + activePlayer).textContent =
+        scores[activePlayer];
+      nextPlayer();
+    }
+    diceResultBefore = dice;
 
     // 2. Display result
     var diceDOM = document.querySelector('.dice');
@@ -92,6 +101,7 @@ function init() {
   activePlayer = 0;
   roundScore = 0;
   gamePlaying = true;
+  dice = 0;
   // CSS manipulation - hideing dice
   document.querySelector('.dice').style.display = 'none';
 
