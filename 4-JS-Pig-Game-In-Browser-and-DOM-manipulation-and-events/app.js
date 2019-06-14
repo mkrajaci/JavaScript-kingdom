@@ -8,7 +8,7 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
-
+//TODO: Make it responsive
 var scores, roundScore, activePlayer, gamePlaying, diceResultBefore;
 
 init();
