@@ -1,2 +1,4 @@
 Progress
 https://www.udemy.com/the-complete-javascript-course/learn/lecture/10788532#content
+
+Make pig game responsive
