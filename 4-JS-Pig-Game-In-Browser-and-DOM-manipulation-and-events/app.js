@@ -24,24 +24,33 @@ init();
 document.querySelector('.btn-roll').addEventListener('click', function() {
   if (gamePlaying) {
     // 1. Random number
-    dice = Math.floor(Math.random() * 6) + 1;
+    dice1 = Math.floor(Math.random() * 6) + 1;
+    dice2 = Math.floor(Math.random() * 6) + 1;
 
-    // Updating rules of game, if player gets two sixes in a row score resets
-    if ((diceResultBefore === 6) & (dice === 6)) {
+    // 2. Display result
+    document.getElementById('dice-1').style.display = 'block';
+    document.getElementById('dice-2').style.display = 'block';
+    document.getElementById('dice-1').src = 'dice-' + dice1 + '.png';
+    document.getElementById('dice-2').src = 'dice-' + dice2 + '.png';
+
+    // 3. Update the round score if rolled numbet was not a 1
+    if (dice1 != 1 && dice2 != 1) {
+      // Add score
+      roundScore += dice1 + dice2;
+      document.querySelector(
+        '#current-' + activePlayer
+      ).textContent = roundScore;
+    } else {
+      nextPlayer();
+    }
+
+    /*// Updating rules of game, if player gets two sixes in a row score resets
+    if (diceResultBefore === 6 && dice === 6) {
       scores[activePlayer] = 0;
       document.querySelector('#score-' + activePlayer).textContent =
         scores[activePlayer];
       nextPlayer();
-    }
-    diceResultBefore = dice;
-
-    // 2. Display result
-    var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
-
-    // 3. Update the round score if rolled numbet was not a 1
-    if (dice != 1) {
+    } else if (dice != 1) {
       // Add score
       roundScore += dice;
       document.querySelector(
@@ -50,6 +59,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     } else {
       nextPlayer();
     }
+
+    diceResultBefore = dice;*/
   }
 });
 
@@ -61,10 +72,20 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     // Update the UI
     document.querySelector('#score-' + activePlayer).textContent =
       scores[activePlayer];
+
+    var input = document.querySelector('.final-score').value;
+    var winningScore;
+    if (input) {
+      winningScore = input;
+    } else {
+      winningScore = 100;
+    }
+
     // Check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= winningScore) {
       document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
-      document.querySelector('.dice').style.display = 'none';
+      document.getElementById('dice-1').style.display = 'none';
+      document.getElementById('dice-2').style.display = 'none';
       // Manipulacija imenom klase kroz JS
       document
         .querySelector('.player-' + activePlayer + '-panel')
@@ -92,7 +113,8 @@ function nextPlayer() {
   document.querySelector('.player-0-panel').classList.toggle('active');
   document.querySelector('.player-1-panel').classList.toggle('active');
 
-  document.querySelector('.dice').style.display = 'none';
+  document.getElementById('dice-1').style.display = 'none';
+  document.getElementById('dice-2').style.display = 'none';
 }
 document.querySelector('.btn-new').addEventListener('click', init);
 
@@ -103,7 +125,8 @@ function init() {
   gamePlaying = true;
   dice = 0;
   // CSS manipulation - hideing dice
-  document.querySelector('.dice').style.display = 'none';
+  document.getElementById('dice-1').style.display = 'none';
+  document.getElementById('dice-2').style.display = 'none';
 
   document.getElementById('score-0').textContent = '0';
   document.getElementById('score-1').textContent = '0';
