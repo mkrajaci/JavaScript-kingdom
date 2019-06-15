@@ -62,7 +62,7 @@ var marija = Object.create(personProto, {
   job: { value: 'designer' }
 });
 */
-
+/*
 // Primitives
 
 var a = 23;
@@ -97,3 +97,22 @@ function change(a, b) {
 change(age, obj)
 
 console.log(age, obj.city)
+*/
+
+// Passing functions as arguments
+
+var years = [1980, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+  var arrRes = [];
+  for (var i = 0; i < arr.lenght; i++) {
+    arrRes.push(fn(arr[i]));
+  }
+  return arrRes;
+}
+function calculateAge(el) {
+  return 2019 - el;
+}
+
+var ages = arrayCalc(years, calculateAge);
+console.log(ages);
