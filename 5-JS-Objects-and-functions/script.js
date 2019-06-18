@@ -135,7 +135,7 @@ console.log(rates);
 */
 
 // Functions returning functions
-
+/*
 function inteviewQuestion(job) {
   if (job === 'designer') {
     return function(name) {
@@ -159,3 +159,19 @@ teacherQuestion('Marija');
 designerQuestion('Mario');
 
 inteviewQuestion('designer')('Mariola');
+*/
+
+// Immediately Invoked Functions Expressions (IIFE)
+/*
+function game() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
+
+game();
+*/
+// skriveno od vanjskog svijeta, privatnost varijable score je zagarantirana
+(function() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
